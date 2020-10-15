@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  homeassistant:
+    image: homeassistant/home-assistant:stable
+    container_name: homeassistant
+    hostname: homeassistant
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ../Data/homeassistant:/config
+    environment:
+      - TZ=America/Chicago
