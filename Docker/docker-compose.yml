@@ -10,3 +10,12 @@ services:
       - ../Data/homeassistant:/config
     environment:
       - TZ=America/Chicago
+    labels:
+      # Traefik Labels
+      - "traefik.enable=true"
+      # HTTPS Labels
+      - "traefik.http.routers.homeassistant.rule=Host(`localhost`)" # Domain Name
+      - "traefik.http.routers.homeassistant.entrypoints=web-secure"
+      - "traefik.http.routers.homeassistant.service=homeassistant"
+      - "traefik.http.routers.homeassistant.tls=true"
+      - "traefik.http.services.homeassistant.loadbalancer.server.port=8123" # Proxied Port
