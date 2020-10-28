@@ -1,10 +1,16 @@
 # App-Home-Assistant
 
+## First Time Prerequisites
+
+1. Run [Traefik](https://github.com/mattlombana/App-Traefik)
+
 ## Running the Containers
 
 1. Update the following mount point in [docker-compose.yml](./Docker/docker-compose.yml)
   - `../Data/homeassistant:/config`
-2. Run `docker-compose -f ./Docker/docker-compose.yml up -d`
+2. Update the Traefik host label in [docker-compose.yml](./Docker/docker-compose.yml)
+    * ``"traefik.http.routers.homeassistant.rule=Host(`localhost`)"``
+3. Run `docker-compose -f ./Docker/docker-compose.yml up -d`
 
 ## First Time Setup
 
