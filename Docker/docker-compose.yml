@@ -5,7 +5,6 @@ services:
     container_name: homeassistant
     hostname: homeassistant
     restart: unless-stopped
-    network_mode: host
     volumes:
       - ../Data/homeassistant:/config
     environment:
